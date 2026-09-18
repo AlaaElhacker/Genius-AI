@@ -1,0 +1,34 @@
+{
+  "c6267774208be5f0e3a6e964fa51388d9896f876a4c66a6f60b5725bfab86e33": {
+    "document_id": "c6267774208be5f0e3a6e964fa51388d9896f876a4c66a6f60b5725bfab86e33",
+    "file_name": "Overview_ai_in_drugs.pdf",
+    "file_hash": "c6267774208be5f0e3a6e964fa51388d9896f876a4c66a6f60b5725bfab86e33",
+    "page_count": 58,
+    "chunk_count": 229,
+    "indexed_at": "2026-09-01T08:18:40.771728+00:00"
+  },
+  "25c105c15751b710c299464be24b82498bdb13e7a646f804c3185f07311e32a8": {
+    "document_id": "25c105c15751b710c299464be24b82498bdb13e7a646f804c3185f07311e32a8",
+    "file_name": "Generative_ai.pdf",
+    "file_hash": "25c105c15751b710c299464be24b82498bdb13e7a646f804c3185f07311e32a8",
+    "page_count": 29,
+    "chunk_count": 248,
+    "indexed_at": "2026-09-01T08:20:26.206419+00:00"
+  },
+  "dbe27617161894b06eb62988d330c00b96a41a77e9ff68126c0d265d041a678b": {
+    "document_id": "dbe27617161894b06eb62988d330c00b96a41a77e9ff68126c0d265d041a678b",
+    "file_name": "Limmitation_of_ai_in_drugs.pdf",
+    "file_hash": "dbe27617161894b06eb62988d330c00b96a41a77e9ff68126c0d265d041a678b",
+    "page_count": 20,
+    "chunk_count": 102,
+    "indexed_at": "2026-09-01T08:22:51.249602+00:00"
+  },
+  "02e5f9baa39203543bbe0d4b7229c7283260f6c91038d505b8b5e97225b3e262": {
+    "document_id": "02e5f9baa39203543bbe0d4b7229c7283260f6c91038d505b8b5e97225b3e262",
+    "file_name": "DEEP__graph_learning.pdf",
+    "file_hash": "02e5f9baa39203543bbe0d4b7229c7283260f6c91038d505b8b5e97225b3e262",
+    "page_count": 22,
+    "chunk_count": 170,
+    "indexed_at": "2026-09-18T10:16:53.452641+00:00"
+  }
+}

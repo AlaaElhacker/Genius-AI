@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genius AI — Study Assistant</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app-background"></div>
+
+  <div class="app-shell">
+    <header class="app-header">
+<div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="4" width="16" height="22" rx="2" fill="#F5C4B3" stroke="#993C1D" stroke-width="1"/>
+            <rect x="9" y="10" width="10" height="1.5" rx="0.75" fill="#993C1D"/>
+            <rect x="9" y="14" width="10" height="1.5" rx="0.75" fill="#993C1D"/>
+            <rect x="9" y="18" width="6" height="1.5" rx="0.75" fill="#993C1D" opacity="0.7"/>
+            <rect x="16" y="17" width="11" height="8" rx="2.5" fill="#D85A30"/>
+            <circle cx="19" cy="21" r="0.6" fill="#fff"/>
+            <circle cx="22" cy="21" r="0.6" fill="#fff"/>
+            <circle cx="25" cy="21" r="0.6" fill="#fff"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Genius AI</h1>
+          <p class="tagline">Your AI-powered study companion.</p>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="status-badge">
+          <span class="status-dot"></span>
+           Study Mode
+        </span>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-header">
+            <h2>Study Library</h2>
+            <span class="doc-count" id="docCount">0 documents</span>
+          </div>
+
+          <div class="scope-selector">
+            <p class="scope-label">Study Scope</p>
+            <label class="scope-option">
+              <input type="radio" name="scope" value="" checked>
+              <span>All Documents</span>
+            </label>
+            <div id="scopeOptions"></div>
+          </div>
+
+          <div class="upload-zone" id="uploadZone">
+            <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden>
+            <div class="upload-content">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 16V4m0 0L8 8m4-4l4 4"/>
+                <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
+              </svg>
+              <p>Drop PDF here or <button type="button" class="link-btn" id="browseBtn">browse</button></p>
+              <span class="upload-hint">Books, lecture notes &amp; study materials</span>
+            </div>
+            <div class="upload-progress hidden" id="uploadProgress">
+              <div class="progress-step active" data-step="upload">Uploading...</div>
+              <div class="progress-step" data-step="read">Reading paper...</div>
+              <div class="progress-step" data-step="extract">Extracting text...</div>
+              <div class="progress-step" data-step="chunk">Creating chunks...</div>
+              <div class="progress-step" data-step="embed">Generating embeddings...</div>
+              <div class="progress-step" data-step="index">Indexing research...</div>
+              <div class="progress-step" data-step="done">Ready to discuss</div>
+            </div>
+          </div>
+
+          <div class="document-list" id="documentList"></div>
+        </div>
+      </aside>
+
+      <main class="chat-panel">
+        <div class="disclaimer">
+          Genius AI answers are generated only from your uploaded study materials and may be incomplete — always double-check against the original source.
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="welcome-screen" id="welcomeScreen">
+            <div class="welcome-icon">
+              <svg viewBox="0 0 48 48" fill="none">
+                <rect x="8" y="6" width="32" height="36" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="14" y1="16" x2="34" y2="16" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="14" y1="22" x2="30" y2="22" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="14" y1="28" x2="26" y2="28" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="36" cy="36" r="8" fill="var(--color-bio-cyan)" opacity="0.15"/>
+                <circle cx="36" cy="36" r="4" stroke="var(--color-bio-cyan)" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h2>Explore Your Study Library</h2>
+            <p>Upload your study materials, then ask questions, get explanations, or compare concepts across your entire library.</p>
+            <div class="welcome-features">
+              <div class="feature">
+                <span class="feature-icon">📄</span>
+                <span>Multi-document analysis</span>
+              </div>
+              <div class="feature">
+                <span class="feature-icon">📚</span>
+                <span>Source-grounded answers</span>
+              </div>
+              <div class="feature">
+                <span class="feature-icon">📊</span>
+                <span>Cross-document comparison</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <form id="chatForm" class="chat-form">
+            <textarea
+              id="questionInput"
+              placeholder="Ask about your studies..."
+              rows="1"
+              maxlength="4000"
+            ></textarea>
+            <button type="submit" id="sendBtn" disabled aria-label="Send message">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13"/>
+                <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
